@@ -1,0 +1,36 @@
+# Local Python, editor and operating-system files
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.DS_Store
+._*
+.idea/
+.vscode/
+*~
+*.swp
+
+# Fresh local verification runs; results/ is the distributed reference run.
+/reproduced-results/
+/verification/audit_subsix_from_tex.json
+/verification/audit_uniform_independent.json
+
+# Optional manuscript build products
+/*.aux
+/*.bbl
+/*.blg
+/*.fdb_latexmk
+/*.fls
+/*.log
+/*.out
+/*.toc
+/*.synctex.gz
+/main.pdf
+
+# This repository distributes code/data, not the full paper or upload package.
+/main.tex
+/arxiv-submission/
+*.pdf
+*.zip
+*.tar
+*.tar.gz

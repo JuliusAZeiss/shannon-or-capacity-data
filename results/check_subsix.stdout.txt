@@ -1,0 +1,574 @@
+{
+  "status": "PASS: compact exact 54-by-27 certificate",
+  "graph_orders": {
+    "G": 54,
+    "H": 27
+  },
+  "graph_SHA256": {
+    "B": "3ae3822080e779e3d67983c1ded7d00a219869e848e4abc4f63faebb23de0293",
+    "H": "7f570ba821cb923140d4359c322804b2f4744577914fea37714e689bcc404cf3"
+  },
+  "square_code_pairs_checked": [
+    351,
+    351
+  ],
+  "F3_fitting_ranks": {
+    "B_scalar": 5,
+    "H_block_two": 11
+  },
+  "bounds": {
+    "B": "16/3",
+    "D": "32437757/6250000",
+    "H": "12991403/2500000"
+  },
+  "matrix_SHA256": {
+    "B": "cb05b2d3ec4888de9fdeca29a79cb4440d438601a265743baab9dd26984d1acf",
+    "D": "63b2d603f2ffd08d75d946b181a90ec5e0f98ce035d0d98e43ab803b73181794",
+    "H": "fdb839b8da68cb3200e7ccf49d83de655a6baa6c4aaf3b8aa5d56c257d9cfb22"
+  },
+  "free_pair_orbits": {
+    "B": 23,
+    "D": 19,
+    "H": 91
+  },
+  "source_group_order": 16,
+  "source_blocks": {
+    "B": [
+      {
+        "signs": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "dimension": 6,
+        "multiplicity": 1,
+        "positive_scale": 4,
+        "matrix": [
+          [
+            130,
+            108,
+            -36,
+            -48,
+            -128,
+            -8
+          ],
+          [
+            108,
+            102,
+            -48,
+            -31,
+            -80,
+            -38
+          ],
+          [
+            -36,
+            -48,
+            40,
+            -2,
+            -8,
+            54
+          ],
+          [
+            -48,
+            -31,
+            -2,
+            26,
+            70,
+            -24
+          ],
+          [
+            -128,
+            -80,
+            -8,
+            70,
+            190,
+            -68
+          ],
+          [
+            -8,
+            -38,
+            54,
+            -24,
+            -68,
+            92
+          ]
+        ],
+        "positive_leading_minors": [
+          130,
+          1596,
+          5376,
+          2192,
+          96,
+          112
+        ]
+      },
+      {
+        "signs": [
+          1,
+          1,
+          1,
+          -1
+        ],
+        "dimension": 2,
+        "multiplicity": 1,
+        "positive_scale": 8,
+        "matrix": [
+          [
+            101,
+            -54
+          ],
+          [
+            -54,
+            29
+          ]
+        ],
+        "positive_leading_minors": [
+          101,
+          13
+        ]
+      },
+      {
+        "signs": [
+          1,
+          1,
+          -1,
+          1
+        ],
+        "dimension": 2,
+        "multiplicity": 1,
+        "positive_scale": 8,
+        "matrix": [
+          [
+            115,
+            62
+          ],
+          [
+            62,
+            34
+          ]
+        ],
+        "positive_leading_minors": [
+          115,
+          66
+        ]
+      },
+      {
+        "signs": [
+          1,
+          -1,
+          1,
+          1
+        ],
+        "dimension": 3,
+        "multiplicity": 1,
+        "positive_scale": 8,
+        "matrix": [
+          [
+            29,
+            30,
+            40
+          ],
+          [
+            30,
+            32,
+            44
+          ],
+          [
+            40,
+            44,
+            63
+          ]
+        ],
+        "positive_leading_minors": [
+          29,
+          28,
+          20
+        ]
+      },
+      {
+        "signs": [
+          1,
+          -1,
+          1,
+          -1
+        ],
+        "dimension": 1,
+        "multiplicity": 1,
+        "positive_scale": 1480,
+        "matrix": [
+          [
+            1
+          ]
+        ],
+        "positive_leading_minors": [
+          1
+        ]
+      },
+      {
+        "signs": [
+          1,
+          -1,
+          -1,
+          1
+        ],
+        "dimension": 1,
+        "multiplicity": 1,
+        "positive_scale": 1880,
+        "matrix": [
+          [
+            1
+          ]
+        ],
+        "positive_leading_minors": [
+          1
+        ]
+      },
+      {
+        "signs": [
+          -1,
+          1,
+          1,
+          null
+        ],
+        "dimension": 4,
+        "multiplicity": 2,
+        "positive_scale": 4,
+        "matrix": [
+          [
+            149,
+            48,
+            -40,
+            92
+          ],
+          [
+            48,
+            64,
+            56,
+            -29
+          ],
+          [
+            -40,
+            56,
+            110,
+            -108
+          ],
+          [
+            92,
+            -29,
+            -108,
+            128
+          ]
+        ],
+        "positive_leading_minors": [
+          149,
+          7232,
+          10816,
+          3786
+        ]
+      },
+      {
+        "signs": [
+          -1,
+          -1,
+          1,
+          null
+        ],
+        "dimension": 2,
+        "multiplicity": 2,
+        "positive_scale": 4,
+        "matrix": [
+          [
+            77,
+            -128
+          ],
+          [
+            -128,
+            214
+          ]
+        ],
+        "positive_leading_minors": [
+          77,
+          94
+        ]
+      }
+    ],
+    "D": [
+      {
+        "signs": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "dimension": 6,
+        "multiplicity": 1,
+        "positive_scale": 4,
+        "matrix": [
+          [
+            476016444,
+            -235345886,
+            65082680,
+            184791716,
+            -342218020,
+            -94738064
+          ],
+          [
+            -235345886,
+            131429673,
+            6174100,
+            -100000000,
+            152168084,
+            18556638
+          ],
+          [
+            65082680,
+            6174100,
+            207661197,
+            -50000000,
+            55917322,
+            -200000000
+          ],
+          [
+            184791716,
+            -100000000,
+            -50000000,
+            104751028,
+            -200000000,
+            40039826
+          ],
+          [
+            -342218020,
+            152168084,
+            55917322,
+            -200000000,
+            476016314,
+            -66037348
+          ],
+          [
+            -94738064,
+            18556638,
+            -200000000,
+            40039826,
+            -66037348,
+            202822876
+          ]
+        ],
+        "positive_leading_minors": [
+          476016444,
+          7174999520417816,
+          725982898622164495354552,
+          5885348451836326310626320,
+          164540717060854245618847008,
+          384508414554317813855647488
+        ]
+      },
+      {
+        "signs": [
+          1,
+          1,
+          1,
+          -1
+        ],
+        "dimension": 2,
+        "multiplicity": 1,
+        "positive_scale": 4,
+        "matrix": [
+          [
+            599955716,
+            564654114
+          ],
+          [
+            564654114,
+            531429673
+          ]
+        ],
+        "positive_leading_minors": [
+          599955716,
+          1511235872
+        ]
+      },
+      {
+        "signs": [
+          1,
+          1,
+          -1,
+          1
+        ],
+        "dimension": 2,
+        "multiplicity": 1,
+        "positive_scale": 8,
+        "matrix": [
+          [
+            446815473,
+            -366981326
+          ],
+          [
+            -366981326,
+            301411438
+          ]
+        ],
+        "positive_leading_minors": [
+          446815473,
+          604861898
+        ]
+      },
+      {
+        "signs": [
+          1,
+          -1,
+          1,
+          1
+        ],
+        "dimension": 3,
+        "multiplicity": 1,
+        "positive_scale": 4,
+        "matrix": [
+          [
+            1476060732,
+            -465082680,
+            703287300
+          ],
+          [
+            -465082680,
+            211342915,
+            -455917322
+          ],
+          [
+            703287300,
+            -455917322,
+            1182385502
+          ]
+        ],
+        "positive_leading_minors": [
+          1476060732,
+          95653078581931380,
+          1738020418269246072
+        ]
+      },
+      {
+        "signs": [
+          1,
+          -1,
+          1,
+          -1
+        ],
+        "dimension": 1,
+        "multiplicity": 1,
+        "positive_scale": 16,
+        "matrix": [
+          [
+            1
+          ]
+        ],
+        "positive_leading_minors": [
+          1
+        ]
+      },
+      {
+        "signs": [
+          1,
+          -1,
+          -1,
+          1
+        ],
+        "dimension": 1,
+        "multiplicity": 1,
+        "positive_scale": 536,
+        "matrix": [
+          [
+            1
+          ]
+        ],
+        "positive_leading_minors": [
+          1
+        ]
+      },
+      {
+        "signs": [
+          -1,
+          1,
+          1,
+          null
+        ],
+        "dimension": 4,
+        "multiplicity": 2,
+        "positive_scale": 2,
+        "matrix": [
+          [
+            738030368,
+            -564654114,
+            703287300,
+            -705261936
+          ],
+          [
+            -564654114,
+            506578551,
+            -952168084,
+            418556638
+          ],
+          [
+            703287300,
+            -952168084,
+            2969647260,
+            0
+          ],
+          [
+            -705261936,
+            418556638,
+            0,
+            870370696
+          ]
+        ],
+        "positive_leading_minors": [
+          738030368,
+          55036085958311772,
+          4021005850669215712,
+          67239720869675437888
+        ]
+      },
+      {
+        "signs": [
+          -1,
+          -1,
+          1,
+          null
+        ],
+        "dimension": 2,
+        "multiplicity": 2,
+        "positive_scale": 8,
+        "matrix": [
+          [
+            334496520,
+            314445495
+          ],
+          [
+            314445495,
+            295596409
+          ]
+        ],
+        "positive_leading_minors": [
+          334496520,
+          809201655
+        ]
+      }
+    ]
+  },
+  "partner_block_orders": [
+    15,
+    12
+  ],
+  "positive_full_matrix_pivots": {
+    "B": 27,
+    "D": 27,
+    "H": 27
+  },
+  "interpolation_weight": "13/1000",
+  "strict_power_comparisons": [
+    true,
+    true
+  ],
+  "strict_product_upper": "5193957/1000000",
+  "threshold_interval": "[5.193957,sqrt(27))",
+  "scope": "Exact finite inputs; analytical spectral argument is proved in the supplement."
+}

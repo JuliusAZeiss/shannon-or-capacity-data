@@ -1,0 +1,126 @@
+{
+  "arithmetic": "Proof comparisons use integer, finite-field or rational arithmetic. Decimal logarithm diagnostics in the independent uniform audit do not certify inequalities.",
+  "assertions_enabled": true,
+  "checks": [
+    {
+      "command": [
+        "python3",
+        "-B",
+        "verification/check_exact.py"
+      ],
+      "elapsed_seconds": 0.053234,
+      "returncode": 0,
+      "script": "verification/check_exact.py",
+      "status": "PASS",
+      "stderr": "check_exact.stderr.txt",
+      "stdout": "check_exact.stdout.txt",
+      "success_marker_found": true,
+      "timed_out": false
+    },
+    {
+      "command": [
+        "python3",
+        "-B",
+        "verification/check_uniform_cutoff.py"
+      ],
+      "elapsed_seconds": 0.021857,
+      "returncode": 0,
+      "script": "verification/check_uniform_cutoff.py",
+      "status": "PASS",
+      "stderr": "check_uniform_cutoff.stderr.txt",
+      "stdout": "check_uniform_cutoff.stdout.txt",
+      "success_marker_found": true,
+      "timed_out": false
+    },
+    {
+      "command": [
+        "python3",
+        "-B",
+        "verification/check_subsix.py"
+      ],
+      "elapsed_seconds": 0.102605,
+      "returncode": 0,
+      "script": "verification/check_subsix.py",
+      "status": "PASS",
+      "stderr": "check_subsix.stderr.txt",
+      "stdout": "check_subsix.stdout.txt",
+      "success_marker_found": true,
+      "timed_out": false
+    },
+    {
+      "command": [
+        "python3",
+        "-B",
+        "verification/audit_subsix_from_tex.py",
+        "subsix_supplement.tex",
+        "verification/audit_subsix_from_tex.json"
+      ],
+      "elapsed_seconds": 0.225753,
+      "returncode": 0,
+      "script": "verification/audit_subsix_from_tex.py",
+      "status": "PASS",
+      "stderr": "audit_subsix_from_tex.stderr.txt",
+      "stdout": "audit_subsix_from_tex.stdout.txt",
+      "success_marker_found": true,
+      "timed_out": false
+    },
+    {
+      "command": [
+        "python3",
+        "-B",
+        "verification/audit_uniform_independent.py"
+      ],
+      "elapsed_seconds": 0.046801,
+      "returncode": 0,
+      "script": "verification/audit_uniform_independent.py",
+      "status": "PASS",
+      "stderr": "audit_uniform_independent.stderr.txt",
+      "stdout": "audit_uniform_independent.stdout.txt",
+      "success_marker_found": true,
+      "timed_out": false
+    }
+  ],
+  "elapsed_seconds": 0.455967,
+  "finished_at_utc": "2026-10-30T16:06:38.309517+00:00",
+  "generated_audit_reports": [
+    "audit_subsix_from_tex.json",
+    "audit_uniform_independent.json"
+  ],
+  "independent_agreement": {
+    "code_pair_count_agreement": true,
+    "graph_order_agreement": {
+      "G": true,
+      "H": true
+    },
+    "matrix_hash_agreement": {
+      "B": true,
+      "D": true,
+      "H": true
+    },
+    "status": "PASS"
+  },
+  "input_sha256": {
+    "subsix_supplement.tex": "cf66e661e82564c78c8741f22fb319198be64ba32eb5a268339bdbda4b82db34",
+    "threshold_supplement.tex": "bc5f8c55c095c933e567d1f12b955d863e059e14ea4b52feee2858d79884d2d4",
+    "verification/audit_subsix_from_tex.py": "134bd0650e69047f202faffa882057a4f6566342d542210bbdc4431c83e1535a",
+    "verification/audit_uniform_independent.py": "6a27845032112b880e3c341bd24d22640f20f81c8d6a1cd7083932aa376583cc",
+    "verification/check_exact.py": "86324a75e5f4065c780f947a9e500e731e82449adfc74701026dd06389897a46",
+    "verification/check_subsix.py": "a85d7703f0fb0ddc34b747d2fcf296532780b514a06865f40d1fb9ae4721a37e",
+    "verification/check_uniform_cutoff.py": "869c98115df6fb12f22b62f1ad9b2f9b84ea11f6629ca9ea9a3f4ccecef93cda",
+    "verification/compact_bd.py": "7b63af4edae1c9250aeb20a0982c8f3ed9666491cf3a10bde9b7492ccd5339a4",
+    "verification/compact_h.py": "3ae02fd72690280636ba69966eb0e068f25f195aa51a8c230d5b2b8291b22be8"
+  },
+  "log_path_redaction": "Temporary package paths in captured stdout/stderr are replaced by <verification-workdir>. No mathematical values are changed.",
+  "platform": {
+    "machine": "arm64",
+    "release": "25.6.0",
+    "system": "Darwin"
+  },
+  "python_implementation": "CPython",
+  "python_version": "3.12.14",
+  "runner_sha256": "afe39cb1f63b72a888ab732448f0e439d5307af190690b499b55dfc90e35df1e",
+  "schema_version": 1,
+  "scope": "Exact finite graph, code, matrix-certificate and scalar checks. The paper's analytical arguments are not formally verified by these programs.",
+  "started_at_utc": "2026-10-30T16:06:37.851635+00:00",
+  "status": "PASS"
+}

@@ -1,0 +1,1 @@
+PASS: independent primitive graph, eight-row, overlap, and closed-cutoff checks.

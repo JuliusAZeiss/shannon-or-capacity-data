@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "input_sha256": "cf66e661e82564c78c8741f22fb319198be64ba32eb5a268339bdbda4b82db34",
+  "graphs": {
+    "B": {
+      "order": 27,
+      "size": 161
+    },
+    "D": {
+      "order": 27,
+      "size": 190
+    },
+    "H": {
+      "order": 27,
+      "size": 176
+    }
+  },
+  "positive_LDL_pivots": {
+    "B": 27,
+    "D": 27,
+    "H": 27
+  },
+  "scalar_comparisons": {
+    "five_profile_strictly_below_L": true,
+    "eleven_halves_profile_strictly_below_L": true,
+    "L_squared_less_than_27": true,
+    "q_squared_greater_than_27": true,
+    "b_less_than_16_over_3": true,
+    "factor_upper_bounds_below_six": true,
+    "printed_integer_square": true
+  },
+  "report": "verification/audit_subsix_from_tex.json"
+}

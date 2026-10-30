@@ -1,0 +1,406 @@
+\Needspace{16\baselineskip}
+\section{Proof of Theorem~\ref*{thm:sharper}(2): coverage of real thresholds}\label{sec:thresholdproof}
+
+This appendix proves the uniform threshold statement in
+\cref{thm:sharper}(2). We construct graph pairs covering overlapping
+ranges of separating thresholds, then extend this coverage to every
+real threshold from $6.0101$ by joining complete graphs.
+
+This appendix combines an analytical construction with computer-assisted
+checks of finite graph data and threshold inequalities. OpenAI Codex
+assisted with exploring the constructions and with developing and
+reviewing the verification code. The finite threshold comparisons and
+interval overlaps are checked using exact integer and rational
+arithmetic; the extension to all thresholds in the claimed range is
+proved analytically.
+
+\begin{theorem}[Failure at every real threshold from $6.0101$]
+\label{thm:real-thresholds}
+For every real $t\ge6.0101$, there are finite simple graphs $G,H$ such that
+\[
+ \boxed{\C(G\times H)<t<\min\{\C(G),\C(H)\}.}
+\]
+In particular, $f_C(t)<t$ throughout this range.
+\end{theorem}
+
+
+The proof gives the stronger range $t>T_0$, where
+$T_0=6.0100886404\ldots$ is defined exactly
+in~\eqref{eq:uniform-optimized}. We first optimize a counterexample
+near six, then use eight witnesses to cover a full unit interval and
+extend that cover by joining complete graphs. The optimization is
+analytical, and all comparisons for the stated decimal cutoff use
+exact integer arithmetic.
+
+We use the weighted product bound~\eqref{eq:weighted-main} from
+\suppref{sec:interpolation}.
+Throughout this section, put
+\[
+ A=U_6,\qquad D=\overline A,\qquad
+ h(X)=\phif{\F_2}(X),\qquad q(X)=\vartheta(\overline X).
+\]
+Both $h$ and $q$ are OR spectral points. The constructions in
+\cref{lem:binary,lem:clebsch} give
+\[
+ h(A)=6,\qquad q(D)\le4,\qquad
+ \C(Q)\ge16^{1/3},\qquad q(Q)\le8/3.
+\]
+We first provide the remaining small-graph estimates.
+
+\subsection{Fractional colourings and a 37-vertex partner}
+
+We use the fractional-colouring definitions in
+\hyperref[def:fractional-colouring]{Supplementary App.~\ref*{sec:spectrum}}
+and the inequality $h(X)\le\chi_f(X)$ proved in
+\eqref{eq:haemers-colouring} by the coordinate-vector fitting construction.
+
+In particular,
+\begin{equation}\label{eq:threshold-colouring-D}
+ h(D)\le\chi_f(D)\le\frac{16}{3}.
+\end{equation}
+Indeed, $A$ is vertex-transitive. Coordinate permutations and the maps
+$T_v(x)=x+(x\cdot v)v$ for even-weight $v$ preserve dot products
+and odd weight; moreover, $T_v^2$ is the identity. Taking
+$v=e_1+e_2+e_3+e_4$ or $v=\mathbf1$ sends $e_1$ to a vector of
+weight three or five. Permutations then reach every odd-weight vector.
+Thus $D$ is also vertex-transitive. Averaging its independent six-set
+$\{e_1,\ldots,e_6\}$ over the automorphism group covers every vertex
+equally. Normalizing this coverage to one gives a fractional colouring
+of total weight $32/6$, as explained in \suppref{sec:spectrum}, and proves
+\eqref{eq:threshold-colouring-D}.
+
+\begin{lemma}[A self-complementary circulant]\label{lem:circulant37}
+Let $R$ be the graph on $\mathbb Z/37\mathbb Z$ in which two vertices
+are adjacent when their undirected cyclic distance belongs to
+\[
+ S=\{6,7,8,9,10,12,13,15,18\}.
+\]
+Then
+\[
+ \C(R)=q(R)=\sqrt{37},\qquad h(R)\le\chi_f(R)=\frac{37}{6}.
+\]
+\end{lemma}
+\begin{proof}
+Multiplication by six exchanges the two members of each distance pair
+\[
+ (1,6),(2,12),(3,18),(4,13),(5,7),
+ (8,11),(9,17),(10,14),(15,16).
+\]
+Since $S$ chooses one member of every pair, this map is an isomorphism
+$R\cong\overline R$. Consequently the 37 words $(i,6i)$ form a clique
+in $R\OR R$, proving $\C(R)\ge\sqrt{37}$. The graph is
+vertex-transitive, so Lov\'asz's identity
+$\vartheta(R)\vartheta(\overline R)=37$~\cite{Lovasz}, together with
+self-complementarity, gives the matching theta upper bound.
+
+The set $B=\{0,6,12,18,24,30\}$ is a six-clique because its nonzero
+undirected differences lie in $\{6,12,18,13,7\}$. Thus $6B$ is an
+independent six-set. Its 37 translates cover every vertex six times,
+giving $\chi_f(R)\le37/6$. Conversely, every independent set has
+size at most $\vartheta(R)=\sqrt{37}<7$, hence at most six. Summing
+the covering constraints of any fractional colouring gives
+$37\le6\chi_f(R)$. Thus $\chi_f(R)=37/6$, proving the claim.
+\end{proof}
+
+\subsection{The initial pair near six}
+
+Put $G=A\sqcup(D\join K_1)$. For any $\varphi\in\spec$, write
+$x=\varphi(A)$ and $y=\varphi(D)$. The 32 diagonal words in
+$A\OR D$ form a clique, so $xy\ge32$. The join and maximum rules give
+$\varphi(G)=\max\{x,y+1\}$. If this maximum is $r$, then
+$32\le xy\le r(r-1)$, and hence
+\begin{equation}\label{eq:near-six-factors}
+ \C(G)\ge\frac{1+\sqrt{129}}2>\sqrt{37}=\C(R).
+\end{equation}
+The projections give the spectral upper bounds
+\[
+\begin{array}{c|cc}
+ &h&q\\ \hline
+ A\times R&6&\sqrt{37}\\
+ (D\join K_1)\times R&37/6&5.
+\end{array}
+\]
+The geometric bound in~\eqref{eq:weighted-main} gives
+\[
+ \C(G\times R)\le
+ \min_{0\le\lambda\le1}
+ \max\{6^\lambda(\sqrt{37})^{1-\lambda},
+          (37/6)^\lambda5^{1-\lambda}\}.
+\]
+Put $d=\log(\sqrt{37}/6)>0$ and $\ell=\log(6/5)>0$,
+using natural logarithms.
+After subtracting $\log6$, the logarithms of the two branches are
+$(1-\lambda)d$ and $2\lambda d-(1-\lambda)\ell$.
+The first decreases and the second increases with $\lambda$.
+They agree at $\lambda_*=(\ell+d)/(\ell+3d)\in(0,1)$,
+which therefore minimizes their maximum. Consequently
+\begin{equation}\label{eq:uniform-optimized}
+ \C(G\times R)\le T_0
+ :=6\exp\!\left(\frac{2d^2}{\ell+3d}\right)
+ =6.0100886404\ldots .
+\end{equation}
+Together with~\eqref{eq:near-six-factors}, this proves failure at every
+threshold $T_0<t<\sqrt{37}$.
+
+To prove $T_0<6.0101$ exactly, without using the decimal approximation
+in~\eqref{eq:uniform-optimized}, use $\lambda=93/106$ in the geometric
+bound. Direct integer exponentiation gives
+\begin{equation}\label{eq:uniform-integer-check}
+\begin{aligned}
+ 6^{186}37^{13}10000^{212}&<60101^{212},\\
+ 37^{93}5^{13}10000^{106}&<6^{93}60101^{106}.
+\end{aligned}
+\end{equation}
+Taking the positive $212$th and $106$th roots, respectively, shows that
+both branches are strictly below $60101/10000=6.0101$.
+The supplementary script \nolinkurl{verification/check_uniform_cutoff.py}
+in the accompanying repository~\cite{ZeissData} checks exactly these
+two integer comparisons. The same repository includes
+\nolinkurl{verification/check_exact.py} and
+\nolinkurl{verification/audit_uniform_independent.py}, which check the
+finite graph inputs and interval comparisons used below.
+
+For the interval cover below, we retain a simpler arithmetic bound.
+Use \eqref{eq:weighted-main} with $\lambda=13/15$ and
+$\sqrt{37}<73/12$. The two arithmetic means agree, giving
+\[
+ \C(G\times R)
+ \le\frac{13}{15}\,6+\frac{2}{15}\frac{73}{12}
+ =\frac{13}{15}\frac{37}{6}+\frac{2}{15}\,5
+ =\frac{541}{90}.
+\]
+Thus this pair also supplies the interval $(541/90,\sqrt{37})$.
+The next three subsections cover every $t>541/90$; combining that
+cover with the optimized initial interval proves the theorem.
+
+\subsection{The cycle inputs}
+
+Write $C_n$ for the cycle on $\mathbb Z/n\mathbb Z$, with two vertices
+adjacent when their difference is $1$ or $-1$ modulo $n$ ($n\ge3$).
+For the pentagon $C_5$, the standard theta calculation and its five-word
+square code give
+\[
+ \C(C_5)=q(C_5)=\sqrt5,\qquad h(C_5)\le\chi_f(C_5)=5/2.
+\]
+Explicitly, the words $(i,2i)$, for $i\in\mathbb Z/5\mathbb Z$, form
+a clique in $C_5\OR C_5$. The upper bound is Lov\'asz's pentagon
+calculation~\cite{Lovasz}; the five translates of an independent pair
+give the fractional colouring.
+
+Write $Z=\overline{C_9}$. We need only
+\[
+ \C(Z)\ge81^{1/3},\qquad h(Z)\le9/2,\qquad q(Z)<22/5.
+\]
+For the first inequality, take the 81 words
+\[
+ (x,y,2x+4y),\qquad x,y\in\mathbb Z/9\mathbb Z.
+\]
+If two distinct words were nonadjacent in $Z^{\OR3}$, their coordinate
+differences would have representatives $a,b,c\in\{-1,0,1\}$ with
+$c-2a-4b\equiv0\pmod9$. Its absolute value is at most seven, so this
+is an integer equality. Since $4>2+1$ and $2>1$, it forces
+$a=b=c=0$, a contradiction. The nine translates of an edge of $C_9$
+are independent pairs of $Z$, proving the colouring bound $9/2$.
+Finally, the odd-cycle theta formula~\cite{Lovasz} gives
+\[
+ q(Z)=\vartheta(C_9)
+ =\frac{9\cos(\pi/9)}{1+\cos(\pi/9)}<\frac{22}{5}.
+\]
+For a rational verification of the strict inequality, put $x=\pi/9$.
+Since $1/3<x<1$, the alternating Taylor estimate gives
+\[
+ \cos x\le1-\frac{x^2}{2}+\frac{x^4}{24}
+ \le1-\frac{11x^2}{24}<\frac{205}{216},\qquad
+ \frac{9(205/216)}{1+205/216}=\frac{1845}{421}<\frac{22}{5}.
+\]
+
+\subsection{Balancing the bounds and adding cliques}
+
+For an auxiliary graph $J$, define
+\[
+ G_J=A\sqcup(D\join J),\qquad
+ \rho_b=\frac{b+\sqrt{b^2+128}}2.
+\]
+If $\C(J)\ge b>0$, then \cref{lem:joined-complement} gives
+$\C(G_J)\ge\rho_b$. The following lemma chooses the interpolation
+weight once and for all from three projection bounds.
+
+\begin{lemma}[Balancing and adding cliques]\label{lem:threshold-padding}
+Let $\C(J)\ge b>0$, and let $H$ be a partner graph. Suppose
+$a>6$ and $s>d$ satisfy
+\[
+ s\ge q(H),\qquad
+ a\ge\min\{h(D\join J),h(H)\},\qquad
+ d\ge q(D\join J).
+\]
+Put
+\begin{equation}\label{eq:threshold-balanced}
+ U=\frac{as-6d}{a-6+s-d}.
+\end{equation}
+For every integer $j\ge0$, there are graphs $G^{(j)},H^{(j)}$ with
+\[
+ \C(G^{(j)}\times H^{(j)})\le U+j,\qquad
+ \C(G^{(j)})\ge\rho_b+j,\qquad
+ \C(H^{(j)})=\C(H)+j.
+\]
+\end{lemma}
+\begin{proof}
+Take
+\[
+ G^{(j)}=(A\join K_j)\sqcup(D\join J\join K_j),\qquad
+ H^{(j)}=H\join K_j,
+\]
+omitting $K_0$. The categorical product distributes over disjoint
+union. Projection to the factors and additivity under join give the
+following bounds on its two components.
+\[
+\begin{array}{c|cc}
+ &h&q\\ \hline
+ (A\join K_j)\times H^{(j)}&6+j&s+j\\
+ (D\join J\join K_j)\times H^{(j)}&a+j&d+j.
+\end{array}
+\]
+Choose $\lambda=(s-d)/(a-6+s-d)\in(0,1)$. By construction,
+\[
+ 6\lambda+s(1-\lambda)=a\lambda+d(1-\lambda)=U.
+\]
+Apply the spectral interpolation inequality~\eqref{eq:interpolate}
+to $h,q$ with these weights. The resulting single spectral point,
+the maximum rule, and the weighted
+arithmetic--geometric mean bound the product capacity by $U+j$.
+Finally, every spectral point takes value $\varphi(G_J)+j$ on
+$G^{(j)}$ and value $\varphi(H)+j$ on $H^{(j)}$.
+Taking spectral minima gives the two factor claims.
+\end{proof}
+
+\subsection{A single coverage table}
+
+In \cref{tab:threshold-cover}, $kC_5$ means the join of $k$ copies of $C_5$,
+and every terminating decimal denotes an exact rational number.
+The columns $s,a,d$ satisfy the preceding lemma, and $U$ is
+given by~\eqref{eq:threshold-balanced}. Each row gives
+\begin{equation}\label{eq:threshold-row}
+ \C(G_J\times H)\le U<L<\min\{\C(G_J),\C(H)\}.
+\end{equation}
+Thus that row works for every threshold in the open interval $(U,L)$.
+
+\begin{table}[htbp]
+\centering
+\small
+\renewcommand{\arraystretch}{1.18}
+\begin{tabular}{@{}llccccc@{}}
+\toprule
+$J$ & $H$ & $s$ & $a$ & $d$ & $U$ & $L$\\
+\midrule
+$K_1$ & $R$ & $73/12$ & $37/6$ & $5$ & $541/90$ & $6.08$\\
+$K_1$ & $K_4\join C_5$ & $156/25$ & $19/3$ & $5$ & $357/59$ & $6.17$\\
+$K_2$ & $K_4\join C_5$ & $156/25$ & $13/2$ & $6$ & $228/37$ & $6.23$\\
+$K_2$ & $K_2\join Z$ & $32/5$ & $13/2$ & $6$ & $56/9$ & $6.325$\\
+$K_2$ & $K_2\join2C_5$ & $162/25$ & $7$ & $6$ & $234/37$ & $6.47$\\
+$K_2$ & $3C_5$ & $168/25$ & $22/3$ & $6$ & $498/77$ & $6.7$\\
+$C_5$ & $K_7$ & $7$ & $7$ & $156/25$ & $289/44$ & $6.88$\\
+$Q$ & $K_1\join R$ & $85/12$ & $43/6$ & $20/3$ & $775/114$ & $7.02$\\
+\bottomrule
+\end{tabular}
+\caption{One formula certifies every interval $(U,L)$. The first factor
+is $G_J=A\sqcup(D\join J)$; $s,a,d$ are spectral projection bounds.}
+\label{tab:threshold-cover}
+\end{table}
+
+Here $s$ bounds $q(H)$ and $d$ bounds $q(D)+q(J)$.
+For $a$, use $h(D)+h(J)$ in rows 2 and 6, using
+\eqref{eq:threshold-colouring-D}, and $h(H)$ in all other rows.
+All entries follow from the preceding graph bounds, additivity under
+join, and the elementary enclosures
+\[
+ 2.235<\sqrt5<2.24,\qquad
+ 2.5<16^{1/3},\qquad 4.325<81^{1/3},
+\]
+and $6.08<\sqrt{37}<73/12$. Each follows by squaring or cubing.
+
+For the first factor, $L<\rho_b$ follows from $L>b$ and
+$L(L-b)<32$. For each choice of $J$, it suffices to check the largest
+$L$. Using the respective lower bounds $b=1,2,2.235,2.5$, we obtain
+\[
+\begin{aligned}
+ 6.17(6.17-1)&=31.8989<32,&
+ 6.7(6.7-2)&=31.49<32,\\
+ 6.88(6.88-2.235)&=31.9576<32,&
+ 7.02(7.02-2.5)&=31.7304<32.
+\end{aligned}
+\]
+For the partners, the capacity lower bounds are, in row order,
+\[
+ \sqrt{37},\ 4+\sqrt5,\ 4+\sqrt5,\ 2+81^{1/3},\
+ 2+2\sqrt5,\ 3\sqrt5,\ 7,\ 1+\sqrt{37}.
+\]
+The same rational enclosures place each strictly above its listed $L$.
+This proves~\eqref{eq:threshold-row} for every row.
+
+\FloatBarrier
+\begin{proof}[Completion of the proof of \cref{thm:real-thresholds}]
+Write $(U_i,L_i)$ for the intervals in
+\cref{tab:threshold-cover}. Direct cross-multiplication gives
+$U_i<L_i$ and $U_{i+1}<L_i$; the smallest consecutive overlap
+is $6.325-234/37=1/1480>0$. Their union therefore contains
+$(541/90,7.02)$, an interval of length greater than one.
+
+For any $t>c:=541/90$, choose $j=\lceil t-c\rceil-1\ge0$.
+Then $c<t-j\le c+1<7.02$, so some row has $U_i<t-j<L_i$.
+\Cref{lem:threshold-padding} gives
+\[
+ \C(G^{(j)}\times H^{(j)})\le U_i+j<t<L_i+j
+ <\min\{\C(G^{(j)}),\C(H^{(j)})\}.
+\]
+Thus the same eight witnesses, extended by joining complete graphs,
+cover every $t>541/90$.
+
+The optimized initial pair covers $(T_0,\sqrt{37})$, and
+\eqref{eq:uniform-integer-check} gives
+\[
+ T_0<6.0101<541/90<\sqrt{37}.
+\]
+The two ranges overlap, so together they cover every $t>T_0$.
+In particular they cover every $t\ge6.0101$, including the stated
+endpoint. This proves the uniform clause of \cref{thm:sharper}.
+\end{proof}
+
+For the real-threshold spectral claim in \cref{sec:spectral-consequences}, fix
+$t\ge6.0101$ and choose a pair $G_t,H_t$ from the construction above.
+By~\eqref{eq:duality}, there is a spectral point $\psi_t\in\spec$
+attaining the capacity of $G_t\times H_t$. Since every spectral point
+bounds capacity from above, we obtain
+\[
+ \psi_t(G_t\times H_t)=\C(G_t\times H_t)<t
+ <\min\{\C(G_t),\C(H_t)\}
+ \le\min\{\psi_t(G_t),\psi_t(H_t)\}.
+\]
+This is Simonyi's implication~\cite[Thm.~8]{Simonyi} applied to each
+pair. The choice of $\psi_t$ may depend on $t$.
+
+\subsection{Scope of the sharper thresholds}
+
+The positive cases $1$ and $2$ recalled in \suppref{sec:spectrum},
+together with \cref{thm:finite}, show that the smallest integer value of
+the smaller factor capacity admitting a counterexample lies between
+$3$ and $7$. The unresolved exact integer minima are $3,\ldots,6$. The pair in
+\cref{sec:subsixproof} has smaller factor capacity in
+$[\sqrt{27},5.1965612]$; its exact value is unknown.
+The earlier pair in~\eqref{eq:near-six-factors} has exact smaller
+factor capacity $\sqrt{37}$.
+By \cref{subsix:thm:main}, the sub-six pair gives failure at every
+threshold $5.193957\le t<\sqrt{27}$, whereas this section covers
+every $t>T_0$. A cover joining the lower interval to this upper ray
+is still missing. In particular, the strict-threshold formulation
+does not include $t=\sqrt{27}$ merely from the lower bound
+$\min\{\C(G),\C(H)\}\ge\sqrt{27}$, and the upper-ray proof does not
+include $t=T_0$. This does not assert that each individual threshold
+between these endpoints is unresolved.
+
+Neither result classifies all possible exact noninteger minimum
+capacities; no optimality is claimed.
+Polak's circular-graph constructions provide, after complementation,
+graphs whose OR-capacities approach any integer $r\ge3$ from
+below~\cite[Chap.~9, Thms.~9.3.1 and~9.3.3]{PolakThesis}.
+These constructions do not determine whether the product identity holds
+at those capacities.

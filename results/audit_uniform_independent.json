@@ -1,0 +1,154 @@
+{
+  "status": "PASS",
+  "source_sha256": "bc5f8c55c095c933e567d1f12b955d863e059e14ea4b52feee2858d79884d2d4",
+  "binary_orthogonality": {
+    "vertices": 32,
+    "binary_fitting_rank": 6,
+    "transvection_orbit": 32,
+    "complement_clique": 4,
+    "theta_augmented_gram_rank": 7,
+    "squared_handle_overlap": "1/4",
+    "fractional_coloring_of_D": "32/6 = 16/3"
+  },
+  "circulant37": {
+    "self_complementing_multiplier": 6,
+    "square_code": 37,
+    "clique_size": 6,
+    "independent_size": 6,
+    "fractional_coloring": "37/6"
+  },
+  "clebsch": {
+    "cube_code": 16,
+    "theta_gram_rank": 6,
+    "theta_gram_row_sum": 6,
+    "squared_handle_overlap": "3/8"
+  },
+  "cycle_codes": {
+    "pentagon_square": 5,
+    "complement9_cube": 81,
+    "theta9_rational_enclosure": "1845/421 < 22/5"
+  },
+  "table_rows": [
+    {
+      "row": 1,
+      "J": "K_1",
+      "H": "R",
+      "lambda": "13/15",
+      "U": "541/90",
+      "L": "152/25",
+      "interval_width": "31/450",
+      "first_factor_quadratic_margin": "696/625"
+    },
+    {
+      "row": 2,
+      "J": "K_1",
+      "H": "K_4\\join C_5",
+      "lambda": "93/118",
+      "U": "357/59",
+      "L": "617/100",
+      "interval_width": "703/5900",
+      "first_factor_quadratic_margin": "1011/10000"
+    },
+    {
+      "row": 3,
+      "J": "K_2",
+      "H": "K_4\\join C_5",
+      "lambda": "12/37",
+      "U": "228/37",
+      "L": "623/100",
+      "interval_width": "251/3700",
+      "first_factor_quadratic_margin": "56471/10000"
+    },
+    {
+      "row": 4,
+      "J": "K_2",
+      "H": "K_2\\join Z",
+      "lambda": "4/9",
+      "U": "56/9",
+      "L": "253/40",
+      "interval_width": "37/360",
+      "first_factor_quadratic_margin": "7431/1600"
+    },
+    {
+      "row": 5,
+      "J": "K_2",
+      "H": "K_2\\join2C_5",
+      "lambda": "12/37",
+      "U": "234/37",
+      "L": "647/100",
+      "interval_width": "539/3700",
+      "first_factor_quadratic_margin": "30791/10000"
+    },
+    {
+      "row": 6,
+      "J": "K_2",
+      "H": "3C_5",
+      "lambda": "27/77",
+      "U": "498/77",
+      "L": "67/10",
+      "interval_width": "179/770",
+      "first_factor_quadratic_margin": "51/100"
+    },
+    {
+      "row": 7,
+      "J": "C_5",
+      "H": "K_7",
+      "lambda": "19/44",
+      "U": "289/44",
+      "L": "172/25",
+      "interval_width": "343/1100",
+      "first_factor_quadratic_margin": "53/1250"
+    },
+    {
+      "row": 8,
+      "J": "Q",
+      "H": "K_1\\join R",
+      "lambda": "5/19",
+      "U": "775/114",
+      "L": "351/50",
+      "interval_width": "316/1425",
+      "first_factor_quadratic_margin": "337/1250"
+    }
+  ],
+  "coverage": {
+    "successive_overlaps": [
+      "43/1475",
+      "29/3700",
+      "7/900",
+      "1/1480",
+      "19/7700",
+      "29/220",
+      "233/2850"
+    ],
+    "smallest_overlap": "1/1480",
+    "unit_shift_overlap": "2/225",
+    "base_open_interval": [
+      "541/90",
+      "351/50"
+    ],
+    "integer_shift_rule": "j=ceil(t-c)-1; 0<t-c-j<=1"
+  },
+  "optimized_cutoff": {
+    "rational_weight": "93/106",
+    "branch1_exact_root_enclosure": [
+      "601008922786667/100000000000000",
+      "150252230696667/25000000000000"
+    ],
+    "branch2_exact_root_enclosure": [
+      "300503982369619/50000000000000",
+      "601007964739239/100000000000000"
+    ],
+    "closed_cutoff": "60101/10000",
+    "decimal_diagnostic": {
+      "T0": "6.0100886404184976288868267546756472125479914024205536006693834817055521782677380",
+      "lambda_star": "0.87736562540793125019377169386521377930980815560891120399703841712469573637202372",
+      "label": "Decimal diagnostic only; assertions above certify the closed cutoff."
+    }
+  },
+  "limits": [
+    "Finite arithmetic and graph checks are not a standalone proof of spectral duality/interpolation.",
+    "The all-real coverage follows from the exact overlaps plus the symbolic integer-shift argument.",
+    "No exact noninteger factor capacity is inferred from a separating threshold.",
+    "No claim is made at the optimized open endpoint T0."
+  ]
+}

@@ -1,0 +1,579 @@
+\section{Proof of Theorem~\ref*{thm:sharper}(1): a counterexample below six}\label{sec:subsixproof}
+
+This appendix gives the counterexample with both factor capacities
+below six, proving \cref{thm:sharper}(1). We specify the graphs, codes
+and exact matrix certificates that establish the required capacity
+bounds, together with procedures for checking them.
+
+The proof in this appendix combines analytical arguments with
+computer-assisted verification of explicit graph data, codes and matrix
+certificates. OpenAI Codex assisted with exploring candidate constructions
+and certificates and with developing and reviewing the verification code.
+The finite certificate checks use exact arithmetic, and the
+product-capacity bound follows from the analytical spectral argument.
+
+\subsection{Statement}
+
+We use the conventions of Supplementary Apps.~\ref{sec:notation}--\ref{sec:spectrum}.
+A length-$n$ code in $X$ is a clique in $X^{\OR n}$, and
+$\C(X)=\sup_{n\ge1}\omega(X^{\OR n})^{1/n}$.
+
+Set
+\[
+ b=\frac{32437757}{6250000}=5.19004112,\quad
+ q=\frac{12991403}{2500000}=5.1965612,\quad
+ L=\frac{5193957}{1000000}=5.193957.
+\]
+\begin{proposition}\label{subsix:thm:main}
+For the graphs \(G,H\) defined in Subsec.~\ref{subsix:sec:graphs},
+\[
+ \C(G\times H)<L<\sqrt{27}\leq\min\{\C(G),\C(H)\},
+\]
+and, separately,
+\[
+ \C(G)\leq\frac{16}{3}<6,\qquad \C(H)\leq q<6.
+\]
+Consequently the Shannon OR-capacity Hedetniemi equality fails.
+The same pair witnesses
+\(\C(G\times H)<r<\min\{\C(G),\C(H)\}\) for every real
+\(r\in[L,\sqrt{27})\).
+\end{proposition}
+This proves \cref{thm:sharper}(1).
+The smaller factor capacity lies in $[\sqrt{27},q]$;
+its exact value is unknown. The construction establishes this local
+interval, with no claim that its lower endpoint is optimal or that
+failure extends to every larger threshold.
+
+\subsection{The graphs and their lower-bound codes}\label{subsix:sec:graphs}
+
+\subsubsection{The 54-vertex graph}
+
+Use the following ordered list of vectors in \(\F_3^5\), with entries
+interpreted modulo three.
+\begin{center}
+\small
+\begin{tabular}{r@{\quad}l r@{\quad}l r@{\quad}l}
+\toprule
+\(i\)&\(w_i\)&\(i\)&\(w_i\)&\(i\)&\(w_i\)\\
+\midrule
+0&(0,0,0,0,1) & 9&(0,1,2,0,0) & 18&(1,1,1,2,1)\\
+1&(0,0,0,1,1) & 10&(0,1,2,2,1) & 19&(1,1,1,2,2)\\
+2&(0,0,0,1,2) & 11&(0,1,2,2,2) & 20&(1,1,2,1,1)\\
+3&(0,0,1,2,0) & 12&(1,0,0,0,0) & 21&(1,1,2,2,0)\\
+4&(0,1,0,1,0) & 13&(1,0,1,0,0) & 22&(1,2,1,1,0)\\
+5&(0,1,0,2,0) & 14&(1,0,1,1,2) & 23&(1,2,1,2,1)\\
+6&(0,1,1,0,0) & 15&(1,0,2,0,0) & 24&(1,2,1,2,2)\\
+7&(0,1,1,1,1) & 16&(1,0,2,2,2) & 25&(1,2,2,1,1)\\
+8&(0,1,1,1,2) & 17&(1,1,1,1,0) & 26&(1,2,2,2,0)\\
+\bottomrule
+\end{tabular}
+\end{center}
+Let \(B\) have vertex set \(\{0,\ldots,26\}\) and adjacency
+\[
+ i\sim_Bj\quad\Longleftrightarrow\quad
+ i\ne j\ \text{and}\ w_i\cdot w_j=0\text{ in }\F_3.
+\]
+Let \(D=\overline B\), the simple complement on the same vertex set.
+Define
+\[
+ G=B\sqcup D.
+\]
+For explicit labels, the \(B\)-copy uses \(0,\ldots,26\) and the \(D\)-copy
+uses \(27,\ldots,53\), with \(27+i\) representing vertex \(i\) of \(D\).
+There are no edges between the copies.
+
+The \(27\) words
+\[
+ \mathcal K_G=\{(i,27+i):0\leq i\leq26\}\subseteq V(G)^2
+\]
+form a code because, for distinct \(i,j\), exactly one of \(i\sim_Bj\) and
+\(i\sim_Dj\) holds. Therefore
+\begin{equation}\label{subsix:eq:Glower}
+ \C(G)\geq\omega(G\OR G)^{1/2}\geq\sqrt{27}.
+\end{equation}
+
+\subsubsection{The 27-vertex graph}
+
+Let \(V(H)=\mathbb Z_{29}\setminus\{1,17\}\), ordered as
+\(0,2,3,\ldots,16,18,19,\ldots,28\). The following table defines the graph completely
+by listing, in row \(v\), all its neighbours larger than \(v\).
+Each listed pair is an undirected edge, and there are no loops.
+The residue labels specify the vertices of \(H\); adjacency is defined
+entirely by the table.
+\begin{longtable}{r@{\quad}p{0.84\textwidth}}
+\toprule
+\(v\)&Larger neighbours in \(H\)\\
+\midrule
+\endfirsthead
+\toprule
+\(v\)&Larger neighbours in \(H\), continued\\
+\midrule
+\endhead
+0&\(2,\,4,\,6,\,7,\,8,\,12,\,13,\,16,\,21,\,22,\,23,\,25,\,27\)\\
+2&\(4,\,5,\,6,\,7,\,8,\,9,\,10,\,12,\,15,\,22,\,23\)\\
+3&\(8,\,9,\,11,\,14,\,15,\,20,\,22,\,23,\,26,\,28\)\\
+4&\(5,\,6,\,7,\,8,\,10,\,13,\,15,\,18,\,20,\,22,\,23,\,25,\,28\)\\
+5&\(6,\,7,\,9,\,11,\,12,\,13,\,16,\,18,\,19,\,21,\,22,\,24\)\\
+6&\(8,\,9,\,10,\,15,\,18,\,20,\,25,\,26,\,27\)\\
+7&\(10,\,11,\,13,\,14,\,18,\,19,\,20,\,24,\,25,\,26,\,27,\,28\)\\
+8&\(9,\,10,\,12,\,16,\,24\)\\
+9&\(10,\,11,\,12,\,13,\,15,\,16,\,20,\,22,\,23,\,25,\,26\)\\
+10&\(11,\,13,\,22,\,24,\,28\)\\
+11&\(12,\,13,\,14,\,15,\,22,\,23,\,24,\,25\)\\
+12&\(13,\,14,\,15,\,16,\,18,\,20,\,21,\,24,\,27,\,28\)\\
+13&\(15,\,16,\,20,\,21,\,24\)\\
+14&\(15,\,16,\,18,\,20,\,23,\,25,\,26,\,27,\,28\)\\
+15&\(18,\,22,\,26,\,28\)\\
+16&\(18,\,19,\,20,\,22,\,24,\,25\)\\
+18&\(19,\,20,\,22,\,24,\,26\)\\
+19&\(20,\,21,\,22,\,23,\,25,\,27,\,28\)\\
+20&\(21,\,23,\,24,\,26,\,27\)\\
+21&\(23,\,25,\,26,\,27\)\\
+22&\(24,\,25,\,27,\,28\)\\
+23&\(24,\,25,\,27\)\\
+24&\(25,\,27\)\\
+25&\(27,\,28\)\\
+26&\(28\)\\
+27&\(\varnothing\)\\
+28&\(\varnothing\)\\
+\bottomrule
+\end{longtable}
+This graph has \(176\) edges. The \(27\) words
+\[
+ \mathcal K_H=\{(i,12i\bmod29):i\in\mathbb Z_{29}\setminus\{1,17,28\}\}
+ \cup\{(28,12)\}
+\]
+are all in \(V(H)^2\), since \(12i=1\) and \(12i=17\) modulo \(29\)
+have the unique solutions \(i=17\) and \(i=28\), respectively.
+Their first coordinates are distinct, and the table verifies
+\[
+ (a,b),(c,d)\in\mathcal K_H,\quad(a,b)\ne(c,d)
+ \ \Longrightarrow\
+ a\sim_Hc\ \text{or}\ b\sim_Hd.
+\]
+This is a finite check of \(351\) unordered pairs, also performed by
+the exact verifier described in Subsec.~\ref{subsix:app:verification}.
+Hence
+\begin{equation}\label{subsix:eq:Hlower}
+ \C(H)\geq\sqrt{27}.
+\end{equation}
+
+\subsection{The finite-field certificates}\label{subsix:sec:rank}
+
+A block representation over $\F_3$ of a graph \(X\), with local block size \(d\)
+and ambient dimension \(R\), consists of matrices
+\(P_v\in\F_3^{d\times R}\), \(Q_v\in\F_3^{R\times d}\) such that
+\[
+ P_vQ_v=I_d,\qquad P_vQ_w=0\quad\text{whenever }v\sim_Xw.
+\]
+Both orientations of an edge are included. The resulting block matrix
+$(P_vQ_w)_{v,w}$ need not be symmetric and has rank at most $R$.
+By the definition of fractional Haemers' bound in
+\suppref{sec:spectrum} and \cref{lem:haemers}, these factors certify
+\[
+ h_3(X):=\phif{\F_3}(X)\le R/d.
+\]
+Both $h_3$ and $\overline\vartheta(X)=\vartheta(\overline X)$ are OR
+spectral points, as recalled in \cref{sec:spectral-argument} and
+\cref{lem:haemers}.
+
+\subsubsection{A rank-five scalar representation of B}
+
+Every listed vector satisfies \(w_i\cdot w_i\ne0\) in \(\F_3\).
+Define the row and column factors
+\[
+ \ell_i=(w_i\cdot w_i)^{-1}w_i^{\mathsf T},
+ \qquad v_i=w_i,
+\]
+where the first expression is regarded as a \(1\times5\) row and
+the second as a \(5\times1\) column. Then
+\[
+ \ell_i v_i=1,\qquad \ell_i v_j=0\quad(i\sim_Bj).
+\]
+Thus $h_3(B)\le5$.
+
+\subsubsection{A rank-eleven, block-two representation of H}
+
+The following eleven subsets are independent in \(H\), and every vertex
+belongs to exactly two of them.
+\begin{center}
+\begin{tabular}{r@{\quad}l}
+\toprule
+\(a\)&Independent set \(I_a\)\\
+\midrule
+1&\{2,\,3,\,13,\,18,\,25\}\\
+2&\{3,\,6,\,7,\,16,\,21\}\\
+3&\{8,\,11,\,18,\,27,\,28\}\\
+4&\{8,\,13,\,22,\,23,\,26\}\\
+5&\{0,\,9,\,14,\,19,\,24\}\\
+6&\{4,\,9,\,14,\,21,\,24\}\\
+7&\{2,\,11,\,16,\,27,\,28\}\\
+8&\{0,\,5,\,10,\,15,\,20\}\\
+9&\{5,\,10,\,15,\,20,\,25\}\\
+10&\{6,\,7,\,12,\,22,\,23\}\\
+11&\{4,\,12,\,19,\,26\}\\
+\bottomrule
+\end{tabular}
+\end{center}
+Both claims can be checked directly from the adjacency table.
+Let $e_1,\ldots,e_{11}$ be the standard coordinate vectors of $\F_3^{11}$.
+For \(h\in V(H)\), let \(a(h)<b(h)\) be its two set indices and put
+\[
+ E_h=[\,e_{a(h)}\ \ e_{b(h)}\,]\in\F_3^{11\times2}.
+\]
+Then \(E_h^{\mathsf T}E_h=I_2\), and adjacent vertices have disjoint
+index pairs, so \(E_h^{\mathsf T}E_{h'}=0\) on every \(H\)-edge.
+Thus $h_3(H)\le11/2$; the same representation works over every field.
+
+\subsection{Exact real Gram certificates}\label{subsix:sec:gram}
+
+The following Gram-matrix criterion gives the theta bounds we need.
+\begin{lemma}\label{subsix:lem:gram}
+Suppose a real positive semidefinite matrix \(M\), indexed by \(V(X)\),
+has diagonal entries \(t-1\) and entries \(-1\) on every edge of \(X\).
+Then there are unit vectors \(u_v\) and a fixed unit vector \(c\),
+called the handle, satisfying
+\[
+ u_v\perp u_w\quad(v\sim_Xw),\qquad
+ \langle c,u_v\rangle=t^{-1/2}.
+\]
+Consequently $\overline\vartheta(X)\le t$ and $\C(X)\le t$.
+\end{lemma}
+\begin{proof}
+Write \(M_{vw}=\langle z_v,z_w\rangle\), using a real Gram factorization.
+Take \(u_v=(1,z_v)/\sqrt t\) and \(c=(1,0,\ldots,0)\).
+The orthonormal-representation bound recalled in Supplementary
+App.~\ref{sec:finiteproof} gives $\overline\vartheta(X)\le t$.
+\end{proof}
+
+Subsec.~\ref{subsix:app:matrices} supplies the following certificates.
+\begin{center}
+\begin{tabular}{c r r r c}
+\toprule
+Graph&Order&Scale $s_X$&Diagonal of $M_X$&Parameter $t_X$\\
+\midrule
+$B$&27&$24$&$104$&$16/3$\\
+$D$&27&$100000000$&$419004112$&$b$\\
+$H$&27&$100000000$&$419656120$&$q$\\
+\bottomrule
+\end{tabular}
+\end{center}
+Each $M_X$ is positive definite, has entry $-s_X$ on graph edges,
+and has normalized diagonal $t_X-1$. The symmetry reductions below
+verify positivity on blocks of size at most $6$ for $B,D$, and of sizes
+$15$ and $12$ for $H$. Applying Lem.~\ref{subsix:lem:gram} to the
+normalized matrices $M_X/s_X$ gives
+\[
+ \overline\vartheta(B)\le16/3,\qquad
+ \overline\vartheta(D)\le b,\qquad
+ \overline\vartheta(H)\le q.
+\]
+The maximum rule~\eqref{eq:max} therefore proves
+\begin{equation}\label{subsix:eq:factoruppers}
+ \C(G)\le\overline\vartheta(G)
+ =\max\{\overline\vartheta(B),\overline\vartheta(D)\}\le16/3<6,
+ \qquad \C(H)\le q<6.
+\end{equation}
+
+\subsection{The product bound}\label{subsix:sec:weighted}
+
+The graph $G\times H$ is $(B\times H)\sqcup(D\times H)$.
+Projecting to the appropriate factor in each component gives
+\[
+\begin{array}{c|cc}
+ &h_3&\overline\vartheta\\ \hline
+ B\times H&\le5&\le q\\
+ D\times H&\le11/2&\le b .
+\end{array}
+\]
+Apply~\eqref{eq:weighted-main} with these two spectral points. For every
+$0\le\lambda\le1$,
+\begin{equation}\label{subsix:eq:productupper}
+ \C(G\times H)\le T_\lambda
+ :=\max\{5^\lambda q^{1-\lambda},(11/2)^\lambda b^{1-\lambda}\}.
+\end{equation}
+This already controls arbitrary codes of every length, including words
+whose coordinates lie in different components.
+
+\subsection{Exact verification of the strict separation}
+
+Choose the rational weight \(\lambda=13/1000\). The required strict
+comparisons reduce to the rational inequalities
+\begin{align}
+ 5^{13}\left(\frac{12991403}{2500000}\right)^{987}
+ &<
+ \left(\frac{5193957}{1000000}\right)^{1000},\label{subsix:eq:power1}\\
+ \left(\frac{11}{2}\right)^{13}
+ \left(\frac{32437757}{6250000}\right)^{987}
+ &<
+ \left(\frac{5193957}{1000000}\right)^{1000}.\label{subsix:eq:power2}
+\end{align}
+The inequalities~\eqref{subsix:eq:power1}--\eqref{subsix:eq:power2} are
+checked by integer powers and cross multiplication; the exact
+Python statements are given below. Taking positive \(1000\)-th roots
+proves \(T_\lambda<L\). Also
+\[
+ 5193957^2=26977189317849<27000000000000=27\cdot10^{12},
+\]
+so \(L<\sqrt{27}\). Combining \eqref{subsix:eq:Glower}, \eqref{subsix:eq:Hlower},
+\eqref{subsix:eq:factoruppers}, and \eqref{subsix:eq:productupper} proves
+Prop.~\ref{subsix:thm:main}.
+
+To establish the sub-six spectral claim in \cref{sec:spectral-consequences}, choose the
+single interpolating point $\psi\in\spec$ supplied by
+\eqref{eq:interpolate} for $h_3,\overline\vartheta$ with weights
+$13/1000,987/1000$. The component bounds above and the strict
+comparisons~\eqref{subsix:eq:power1}--\eqref{subsix:eq:power2} give
+$\psi(G\times H)\le T_{13/1000}<L$.
+Every spectral point bounds capacity from above, so
+$\psi(G),\psi(H)\ge\sqrt{27}$.
+To bound their values from above, the identity fitting matrix gives
+$h_3(D)\le27$, and the maximum rule gives $h_3(G)\le27$.
+The existing certificates also give
+$\overline\vartheta(G)\le16/3$, $h_3(H)\le11/2$ and
+$\overline\vartheta(H)\le q<11/2$.
+Thus the same interpolant satisfies
+\[
+ \psi(G)\le27^{13/1000}(16/3)^{987/1000}
+ \le\frac{13}{1000}\,27+\frac{987}{1000}\,\frac{16}{3}
+ =\frac{1123}{200}<6,
+\]
+by the weighted arithmetic--geometric mean inequality, while
+\[
+ \psi(H)\le(11/2)^{13/1000}q^{987/1000}<11/2<6.
+\]
+Thus one spectral point has product value below $\sqrt{27}$ and
+both factor values in $[\sqrt{27},6)$, as asserted in
+\cref{sec:spectral-consequences}.
+
+\subsection{Compact integer matrix certificates}\label{subsix:app:matrices}
+
+The scales and diagonals are those in Subsec.~\ref{subsix:sec:gram}.
+Every edge entry is minus the scale. Only nonedge entries remain to be
+specified. In each table, \texttt{i: j=value} gives an entry at an unordered
+pair $\{i,j\}$; extend it to the whole orbit under the stated permutations,
+and set $M_{ji}=M_{ij}$. For the group $\Gamma$ generated by those
+permutations, this pair orbit is
+$\{\{g(i),g(j)\}:g\in\Gamma\}$.
+Each nonedge orbit occurs exactly once.
+
+\subsubsection{The two source matrices}
+
+Both $B$ and $D$ are preserved by the permutations
+\begin{align*}
+ a&=(4\,5)(6\,9)(7\,11)(8\,10)(17\,22)(18\,23)(19\,24)(20\,25)(21\,26)\\
+ b_0&=(0\,17)(1\,19)(4\,23)(6\,25)(7\,12)(8\,26)(11\,16)(13\,24)(14\,22)\\
+ c&=(0\,16)(2\,15)(4\,25)(5\,20)(6\,23)(7\,22)(9\,18)(11\,17)(12\,14).
+\end{align*}
+They generate a group $\Gamma$ of order $16$. The following $23$ and $19$
+entries determine $M_B$ and $M_D$, respectively.
+
+\noindent\textbf{Source certificate $M_B$:}
+% BEGIN COMPACT B
+\begin{Verbatim}[fontsize=\scriptsize,baselinestretch=1.03]
+ 0: 1=24 2=6 7=15 8=22 14=-9 16=12 18=18 19=27 20=-2
+ 1: 3=-31 4=4 19=11 21=5
+ 2: 3=-4 4=20 8=27
+ 3: 4=35
+ 4: 6=2 8=-20 9=19 23=23 26=34
+ 8: 10=6
+\end{Verbatim}
+% END COMPACT B
+\noindent\textbf{Complement certificate $M_D$:}
+% BEGIN COMPACT D
+\begin{Verbatim}[fontsize=\scriptsize,baselinestretch=1.03]
+ 0: 3=92395858 4=145133660 6=-30688165 12=49988928 13=182327057 15=132541340
+    17=84507591 21=76315484
+ 1: 2=3087050 6=138042021 8=109278319 13=-87574439
+ 2: 6=127958661 15=-3681718
+ 3: 8=40039826
+ 4: 5=47798171 10=83490663 25=123407703
+ 8: 26=-16181236
+\end{Verbatim}
+% END COMPACT D
+
+Here is an elementary reduction of their positivity checks. Write
+$A,B_0,C$ for the permutation matrices of $a,b_0,c$, and put $Z=(AB_0)^2$.
+These are symmetric involutions; $C,Z$ commute with $A,B_0$, and
+$AB_0=ZB_0A$. Thus $A$ and $B_0$ commute on the $Z=+I$ eigenspace
+and anticommute on the $Z=-I$ eigenspace.
+
+Let $\varepsilon,\delta,\alpha,\beta\in\{+1,-1\}$ label the eigenvalues
+of $Z,C,A,B_0$, respectively. When $\varepsilon=+1$, the simultaneous
+eigenspaces of these four commuting symmetric matrices form an orthogonal
+decomposition. When $\varepsilon=-1$, decompose instead by the
+eigenvalues $\delta,\alpha$ of $C,A$. The orthogonal map $B_0$ carries
+each such space onto the space with signs $\delta,-\alpha$.
+A $\Gamma$-invariant symmetric matrix commutes with every generator,
+preserves these spaces, and has orthogonally equivalent restrictions
+on each paired set of spaces. It therefore suffices to check one member
+of each pair, explaining the multiplicity $2$ below.
+
+To obtain explicit integer bases, apply
+\[
+ (I+\beta B_0)(I+\alpha A)(I+\delta C)(I+\varepsilon Z)
+\]
+to $e_0,e_1,\ldots,e_{26}$ when $\varepsilon=+1$, and omit the first
+factor when $\varepsilon=-1$. Divide each nonzero column by the gcd of its
+entries, then retain the first linearly independent columns. Denote the
+resulting basis matrix by $P$. The nonzero spaces are listed below;
+when $\varepsilon=-1$, it suffices to take $\alpha=+1$, with multiplicity
+$2$. The dimensions, counted with multiplicity, sum to $27$.
+
+For each certificate, $P^{\mathsf T}M_XP$ represents the restricted
+quadratic form in the chosen basis, which need not be orthonormal.
+Its positive definiteness is therefore equivalent to that of the
+restriction. Divide this matrix by the positive gcd of its entries.
+The last column records the leading principal minors, the determinants
+of the upper-left square submatrices, for the resulting $M_B$ blocks;
+all are positive. Applying the exact
+elimination below to the $M_D$ blocks likewise gives only positive minors.
+\begin{center}
+\small
+\begin{tabular}{ccccrrl}
+\toprule
+$\varepsilon$&$\delta$&$\alpha$&$\beta$&Order&Multiplicity&Minors for $M_B$\\
+\midrule
+$+$&$+$&$+$&$+$&6&1&$130,1596,5376,2192,96,112$\\
+$+$&$+$&$+$&$-$&2&1&$101,13$\\
+$+$&$+$&$-$&$+$&2&1&$115,66$\\
+$+$&$-$&$+$&$+$&3&1&$29,28,20$\\
+$+$&$-$&$+$&$-$&1&1&$1$\\
+$+$&$-$&$-$&$+$&1&1&$1$\\
+$-$&$+$&$+$&--&4&2&$149,7232,10816,3786$\\
+$-$&$-$&$+$&--&2&2&$77,94$\\
+\bottomrule
+\end{tabular}
+\end{center}
+Thus both source certificates are positive definite, using blocks of
+order at most six.
+
+\Needspace{8\baselineskip}
+\subsubsection{The partner matrix}
+
+On $H$, let $\sigma$ fix $0,12,28$ and send every other vertex
+$v$ to $29-v$. It preserves adjacency. The next $91$ entries, extended
+under $\sigma$, specify $M_H$.
+% BEGIN COMPACT H
+\begin{Verbatim}[fontsize=\scriptsize,baselinestretch=1.03]
+ 0: 3=-92182906 5=112385240 9=105366413 10=260048876 11=-64530825
+    14=103723987 28=24358075
+ 2: 3=66703246 11=207795723 13=104538630 14=-136454182 16=177512886
+    18=115342751 19=-34383691 20=-100268450 21=76229467 24=-95624150
+    25=120690256 26=152316144 27=18986268 28=103951980
+ 3: 4=-35794660 5=-98567795 6=149505933 7=190124261 10=-22994873 12=66710199
+    13=124899718 16=61341650 18=120482232 19=-19609272 21=-23529434
+    24=-98379162 25=42147361
+ 4: 9=272941041 11=23305245 12=-70035550 14=241110784 16=61213470
+    19=135393685 21=30684152 24=262861878
+ 5: 8=35191781 10=321011184 14=-104169070 15=375111138 20=418775902
+    23=-98757666 28=-47386121
+ 6: 7=381208558 11=-42891154 12=337627573 13=-146194020 14=-78782821
+    16=19526989 19=-86283590 21=90671780 22=187815754 23=202130330
+    28=-36203985
+ 7: 8=-59663804 9=-100785398 12=291996527 15=-44507231 16=55398098
+    21=117706337 22=165147825
+ 8: 11=-56920029 13=259229426 14=-47902526 15=57463096 18=183702360
+    19=-222235396 20=41480973 21=10556935 28=92833206
+ 9: 14=379995036 18=-98046773 19=316558361 28=-53434665
+10: 12=-37639343 14=-98004443 15=294664038 16=-99343891 18=-90692258
+    19=60606640
+11: 16=300836730 18=35163766 28=237971338
+13: 14=-57898358 28=23099334
+\end{Verbatim}
+% END COMPACT H
+
+For the positivity check, order the vertices as $F,P,\sigma(P)$, where
+\[
+ F=(0,12,28),\qquad P=(2,3,4,5,6,7,8,9,10,11,13,14).
+\]
+The invariant matrix has the form
+\[
+ M_H=\begin{pmatrix}E&F_0&F_0\\
+ F_0^{\mathsf T}&J&K\\F_0^{\mathsf T}&K&J\end{pmatrix}.
+\]
+Its quadratic form splits into symmetric and antisymmetric coordinates.
+Consequently it is positive definite if and only if
+\[
+ S=\begin{pmatrix}2E&2F_0\\2F_0^{\mathsf T}&J+K\end{pmatrix}
+ \quad\text{and}\quad T=J-K
+\]
+are positive definite. Indeed, for coordinates $(x,y,z)$ of dimensions
+$3,12,12$, respectively,
+\[
+ \begin{pmatrix}x\\y\\z\end{pmatrix}^{\mathsf T}
+ M_H\begin{pmatrix}x\\y\\z\end{pmatrix}
+ =\frac12\begin{pmatrix}x\\y+z\end{pmatrix}^{\mathsf T}
+ S\begin{pmatrix}x\\y+z\end{pmatrix}
+ +\frac12(y-z)^{\mathsf T}T(y-z).
+\]
+The change of variables $(x,y,z)\mapsto(x,y+z,y-z)$ is invertible,
+which proves the equivalence. Exact elimination gives $15$ and $12$ positive
+leading principal minors, respectively, proving that $M_H$ is positive
+definite.
+
+\Needspace{10\baselineskip}
+\subsection{Exact verification and reproducibility}\label{subsix:app:verification}
+
+All entries are specified above. The permutations, orbit coverage,
+graph edges and block dimensions are finite checks. For positive
+definiteness, we use Bareiss's fraction-free elimination~\cite{Bareiss}.
+Sylvester's determinant identity shows that, at stage $k$,
+\texttt{pivot} is the leading principal minor of order $k+1$ and all
+divisions are exact. Positivity of these minors proves positive
+definiteness by Sylvester's criterion.
+\begin{Verbatim}[fontsize=\footnotesize,baselinestretch=.96]
+def positive_definite(M):
+    n = len(M)
+    assert all(len(row) == n for row in M)
+    assert all(M[i][j] == M[j][i]
+               for i in range(n) for j in range(n))
+    T = [row[:] for row in M]
+    previous = 1
+    for k in range(n):
+        pivot = T[k][k]
+        assert pivot > 0
+        for i in range(k + 1, n):
+            for j in range(i, n):
+                num = pivot*T[i][j] - T[i][k]*T[k][j]
+                assert num % previous == 0
+                T[i][j] = T[j][i] = num // previous
+        previous = pivot
+    return n
+\end{Verbatim}
+The following code checks the strict scalar comparisons.
+\begin{Verbatim}[fontsize=\footnotesize,baselinestretch=.96]
+from fractions import Fraction as F
+b = F(32437757, 6250000)
+q = F(12991403, 2500000)
+L = F(5193957, 1000000)
+assert F(5)**13 * q**987 < L**1000
+assert F(11, 2)**13 * b**987 < L**1000
+assert L*L < 27 and max(F(16, 3), b, q) < 6
+\end{Verbatim}
+The verification programs and machine-readable data are available in
+the accompanying repository~\cite{ZeissData}.
+The program \nolinkurl{verification/check_subsix.py} verifies all finite
+inputs and the symmetry reductions. The independent
+\nolinkurl{verification/audit_subsix_from_tex.py} reconstructs the printed
+data and checks the full matrices by rational $LDL^{\mathsf T}$
+factorization. Run either with Python 3.11 or later and assertions enabled:
+do not pass \texttt{-O} or set \texttt{PYTHONOPTIMIZE}. Only the standard
+library is required. Both checkers use exact arithmetic, without floating-point
+operations or a numerical solver. They verify the matrix certificates
+used by the analytical interpolation argument.
+
+
+\paragraph{AI assistance and verification workflow.}
+OpenAI Codex assisted with the development and review of the verification
+programs and with exploration of candidate constructions and certificates.
+The archived inputs are the explicit graph definitions, finite codes and
+integer or rational certificate entries printed in these appendices.
+The programs check these fixed inputs; they do not rely on an AI service,
+a numerical solver or an AI-generated assessment of correctness at run time.
+In particular, the source-derived checker reconstructs the printed matrices
+independently of the modular checker. Integer and rational computations
+establish the finite certificate inequalities. Decimal evaluation in the
+uniform-threshold audit is diagnostic only. The spectral interpolation
+and asymptotic arguments are proved analytically in the appendices and
+are not certified by these finite programs.

@@ -1,0 +1,96 @@
+{
+  "snapshot_date": "2026-10-30",
+  "source": "Code/data publication subset of the local accompanying package, using the current manuscript appendix data sources and unchanged verification programs.",
+  "copied_files": [
+    {
+      "path": "threshold_supplement.tex",
+      "source": "Paper and Submission/shannon_or_hedetniemi_jctb/threshold_supplement.tex",
+      "sha256": "bc5f8c55c095c933e567d1f12b955d863e059e14ea4b52feee2858d79884d2d4",
+      "bytes": 15802,
+      "treatment": "byte-for-byte copy",
+      "source_sha256": "bc5f8c55c095c933e567d1f12b955d863e059e14ea4b52feee2858d79884d2d4"
+    },
+    {
+      "path": "subsix_supplement.tex",
+      "source": "Paper and Submission/shannon_or_hedetniemi_jctb/subsix_supplement.tex",
+      "sha256": "cf66e661e82564c78c8741f22fb319198be64ba32eb5a268339bdbda4b82db34",
+      "bytes": 22611,
+      "treatment": "byte-for-byte copy",
+      "source_sha256": "cf66e661e82564c78c8741f22fb319198be64ba32eb5a268339bdbda4b82db34"
+    },
+    {
+      "path": "verification/audit_subsix_from_tex.py",
+      "source": "Paper and Submission/shannon_or_hedetniemi_jctb/verification/audit_subsix_from_tex.py",
+      "sha256": "134bd0650e69047f202faffa882057a4f6566342d542210bbdc4431c83e1535a",
+      "bytes": 25880,
+      "treatment": "byte-for-byte copy",
+      "source_sha256": "134bd0650e69047f202faffa882057a4f6566342d542210bbdc4431c83e1535a"
+    },
+    {
+      "path": "verification/audit_uniform_independent.py",
+      "source": "Paper and Submission/shannon_or_hedetniemi_jctb/verification/audit_uniform_independent.py",
+      "sha256": "6a27845032112b880e3c341bd24d22640f20f81c8d6a1cd7083932aa376583cc",
+      "bytes": 10936,
+      "treatment": "byte-for-byte copy",
+      "source_sha256": "6a27845032112b880e3c341bd24d22640f20f81c8d6a1cd7083932aa376583cc"
+    },
+    {
+      "path": "verification/check_exact.py",
+      "source": "Paper and Submission/shannon_or_hedetniemi_jctb/verification/check_exact.py",
+      "sha256": "86324a75e5f4065c780f947a9e500e731e82449adfc74701026dd06389897a46",
+      "bytes": 7985,
+      "treatment": "byte-for-byte copy",
+      "source_sha256": "86324a75e5f4065c780f947a9e500e731e82449adfc74701026dd06389897a46"
+    },
+    {
+      "path": "verification/check_subsix.py",
+      "source": "Paper and Submission/shannon_or_hedetniemi_jctb/verification/check_subsix.py",
+      "sha256": "a85d7703f0fb0ddc34b747d2fcf296532780b514a06865f40d1fb9ae4721a37e",
+      "bytes": 6993,
+      "treatment": "byte-for-byte copy",
+      "source_sha256": "a85d7703f0fb0ddc34b747d2fcf296532780b514a06865f40d1fb9ae4721a37e"
+    },
+    {
+      "path": "verification/check_uniform_cutoff.py",
+      "source": "Paper and Submission/shannon_or_hedetniemi_jctb/verification/check_uniform_cutoff.py",
+      "sha256": "869c98115df6fb12f22b62f1ad9b2f9b84ea11f6629ca9ea9a3f4ccecef93cda",
+      "bytes": 954,
+      "treatment": "byte-for-byte copy",
+      "source_sha256": "869c98115df6fb12f22b62f1ad9b2f9b84ea11f6629ca9ea9a3f4ccecef93cda"
+    },
+    {
+      "path": "verification/compact_bd.py",
+      "source": "Paper and Submission/shannon_or_hedetniemi_jctb/verification/compact_bd.py",
+      "sha256": "7b63af4edae1c9250aeb20a0982c8f3ed9666491cf3a10bde9b7492ccd5339a4",
+      "bytes": 9498,
+      "treatment": "byte-for-byte copy",
+      "source_sha256": "7b63af4edae1c9250aeb20a0982c8f3ed9666491cf3a10bde9b7492ccd5339a4"
+    },
+    {
+      "path": "verification/compact_h.py",
+      "source": "Paper and Submission/shannon_or_hedetniemi_jctb/verification/compact_h.py",
+      "sha256": "3ae02fd72690280636ba69966eb0e068f25f195aa51a8c230d5b2b8291b22be8",
+      "bytes": 8603,
+      "treatment": "byte-for-byte copy",
+      "source_sha256": "3ae02fd72690280636ba69966eb0e068f25f195aa51a8c230d5b2b8291b22be8"
+    },
+    {
+      "path": "verification/README.txt",
+      "source": "Paper and Submission/shannon_or_hedetniemi_jctb/verification/README.txt",
+      "sha256": "99ec204e53b9d1b7d593c328f5cbfff7bf2821e7b67e0bbf92ae8f2d6ce155d3",
+      "bytes": 4129,
+      "treatment": "Documentation adapted for the code/data-only repository",
+      "source_sha256": "00686c3a208262f3728bf74942ed927bf8849819544159d6a17334f28e8d49b1"
+    }
+  ],
+  "repository_url": "https://github.com/JuliusAZeiss/shannon-or-capacity-data",
+  "excluded_from_public_repository": [
+    "main.tex",
+    "manuscript PDFs",
+    "arXiv submission folder and upload archives"
+  ],
+  "adaptations": [
+    "run_checks.py copies and hashes only the two appendix data sources, because the full manuscript is not needed for any finite check.",
+    "Documentation describes the code/data repository and its two source-data dependencies."
+  ]
+}

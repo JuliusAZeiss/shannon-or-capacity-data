@@ -1,0 +1,3 @@
+PASS: both geometric product bounds are strictly below 6.0101.
+PASS: the new initial interval overlaps the established all-real cover.
+Conclusion: every real r >= 6.0101 has a strict threshold witness.
